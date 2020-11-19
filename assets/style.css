@@ -1,0 +1,100 @@
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+/* Carousel base class */
+
+.carousel {
+  height: 400px;
+}
+/* Since positioning the image, we need to help out the caption */
+
+.carousel-caption {
+  z-index: 10;
+  position: relative;
+}
+/* Declare heights because of positioning of img element */
+
+.carousel .item {
+  height: 400px;
+  background-color: #777;
+  background-image: url("https://yt.ajnergaard.co.uk/wp-content/uploads/2014/02/sliders-01.png");
+  background-position: center center;
+  background-repeat: none;
+  background-size: 100%;
+  background-size: cover;
+}
+
+.carousel .item .carousel-caption .row > .bigText.tripleBorder {
+  border-right: 5px solid #f00;
+}
+
+.carousel .item .carousel-caption .row > .bigText.tripleBorder:before {
+  border-right: 5px solid #fff;
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 17px;
+  bottom: 0;
+  left: 0;
+}
+
+.carousel .item .carousel-caption .row > .bigText.tripleBorder:after {
+  border-right: 5px solid #aeaeae;
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 6px;
+  bottom: 0;
+  left: 0;
+}
+
+.carousel .item .carousel-caption .mediumText {
+  line-height: 1;
+  font-size: 35px !important;
+  text-align: left;
+  padding-top: 5px;
+}
+
+.carousel .item .carousel-caption .bigText {
+  line-height: 1;
+  font-size: 80px !important;
+  text-align: left;
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.carousel .item .carousel-caption .bigText p {
+  color: #ffffff;
+}
+
+.carousel .item .carousel-caption .bigText p:nth-of-type(1) {
+  margin-top: 10px;
+}
+
+.carousel .item .carousel-caption .bigText p:nth-of-type(2) {
+  color: #858585;
+}
+
+.carousel .item .carousel-caption .bigText p:nth-of-type(3) {
+  color: #f00;
+}
+
+.carousel .item .carousel-caption .bigText a.btn {
+  position: absolute;
+  bottom: 30px;
+  right: 10px;
+  font-size: 30px;
+}
+
+.carousel .item .carousel-caption blockquote {
+  border-left: none;
+  font-size: 60px;
+  position: absolute;
+  top: 50%;
+  margin-top: 8%;
+}
+
+.carousel .item .carousel-caption blockquote footer {
+  color: #f00;
+}
