@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 26, 2020 at 07:20 AM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Host: localhost
+-- Generation Time: Nov 21, 2020 at 06:11 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_gym`
 --
+CREATE DATABASE IF NOT EXISTS `db_gym` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `db_gym`;
 
 -- --------------------------------------------------------
 
@@ -28,6 +30,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
+DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `id_admin` int(34) NOT NULL,
   `user_admin` text NOT NULL,
@@ -43,7 +46,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `user_admin`, `nama_admin`, `pass_admin`, `lvl_admin`, `foto_admin`, `status_admin`) VALUES
-(1, 'admin', 'Reynhard Sianagas', '21232f297a57a5a743894a0e4a801fc3', '1', '', 'aktif');
+(1, 'admin', 'Reynhard Sianagas', '21232f297a57a5a743894a0e4a801fc3', '1', '', 'aktif'),
+(2, 'test', 'test', '202cb962ac59075b964b07152d234b70', '1', '', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -51,6 +55,7 @@ INSERT INTO `admin` (`id_admin`, `user_admin`, `nama_admin`, `pass_admin`, `lvl_
 -- Table structure for table `tbl_harga`
 --
 
+DROP TABLE IF EXISTS `tbl_harga`;
 CREATE TABLE `tbl_harga` (
   `id_harga` int(50) NOT NULL,
   `kategori_harga` text NOT NULL,
@@ -73,6 +78,7 @@ INSERT INTO `tbl_harga` (`id_harga`, `kategori_harga`, `nilai_harga`, `hari_harg
 -- Table structure for table `tbl_member`
 --
 
+DROP TABLE IF EXISTS `tbl_member`;
 CREATE TABLE `tbl_member` (
   `id_member` int(50) NOT NULL,
   `kode_member` text NOT NULL,
@@ -80,23 +86,19 @@ CREATE TABLE `tbl_member` (
   `alamat_member` text NOT NULL,
   `jk_member` text NOT NULL,
   `hp_member` text NOT NULL,
-  `nik_member` text NOT NULL,
   `paket_member` text NOT NULL,
-  `foto_member` text NOT NULL,
   `tgl_member` date NOT NULL,
   `berlaku_member` date NOT NULL,
-  `status_member` text NOT NULL
+  `status_member` text NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_member`
 --
 
-INSERT INTO `tbl_member` (`id_member`, `kode_member`, `nama_member`, `alamat_member`, `jk_member`, `hp_member`, `nik_member`, `paket_member`, `foto_member`, `tgl_member`, `berlaku_member`, `status_member`) VALUES
-(13, '6074', 'fgdfg', 'gdfgdfg', 'wanita', '234234234', '', '4', '', '2020-02-11', '2020-03-12', 'active'),
-(17, '3316', 'asdasd', 'sads', 'pria', '123123123', '', '4', '', '2020-04-26', '2020-05-26', 'active'),
-(20, '1021', 'ssasd', '123123', 'wanita', '123123123', '', '4', '', '2020-04-14', '2020-05-14', 'active'),
-(21, '8939', 'Paijo', 'asdasdasd', 'pria', '55123123', '', '4', '', '2020-04-26', '2020-05-26', 'active');
+INSERT INTO `tbl_member` (`id_member`, `kode_member`, `nama_member`, `alamat_member`, `jk_member`, `hp_member`, `paket_member`, `tgl_member`, `berlaku_member`, `status_member`, `password`) VALUES
+(35, '7733', 'test', 'test', 'wanita', '123', '4', '2020-11-21', '2020-12-21', 'aktif', '202cb962ac59075b964b07152d234b70');
 
 -- --------------------------------------------------------
 
@@ -104,6 +106,7 @@ INSERT INTO `tbl_member` (`id_member`, `kode_member`, `nama_member`, `alamat_mem
 -- Table structure for table `tbl_order`
 --
 
+DROP TABLE IF EXISTS `tbl_order`;
 CREATE TABLE `tbl_order` (
   `id_order` int(100) NOT NULL,
   `kode_order` text NOT NULL,
@@ -118,6 +121,7 @@ CREATE TABLE `tbl_order` (
 -- Table structure for table `tbl_pembayaran`
 --
 
+DROP TABLE IF EXISTS `tbl_pembayaran`;
 CREATE TABLE `tbl_pembayaran` (
   `id_pembayaran` int(59) NOT NULL,
   `id_member` text NOT NULL,
@@ -131,9 +135,7 @@ CREATE TABLE `tbl_pembayaran` (
 --
 
 INSERT INTO `tbl_pembayaran` (`id_pembayaran`, `id_member`, `tgl_pembayaran`, `jumlah_pembayaran`, `ket_pembayaran`) VALUES
-(21, '', '2020-04-14', '140000', 'Daftar member baru, paket 1 Bulan'),
-(22, '', '2020-04-26', '140000', 'Daftar member baru, paket 1 Bulan'),
-(23, '', '2020-04-26', '140000', 'Perpanjangan member, paket 1 Bulan');
+(25, '35', '2020-11-21', '140000', 'Daftar member baru, paket 1 Bulan');
 
 -- --------------------------------------------------------
 
@@ -141,6 +143,7 @@ INSERT INTO `tbl_pembayaran` (`id_pembayaran`, `id_member`, `tgl_pembayaran`, `j
 -- Table structure for table `tbl_pengaturan`
 --
 
+DROP TABLE IF EXISTS `tbl_pengaturan`;
 CREATE TABLE `tbl_pengaturan` (
   `id_pengaturan` int(30) NOT NULL,
   `nama_gym` text NOT NULL,
@@ -162,6 +165,7 @@ INSERT INTO `tbl_pengaturan` (`id_pengaturan`, `nama_gym`, `alamat_gym`, `ketua_
 -- Table structure for table `tbl_produk`
 --
 
+DROP TABLE IF EXISTS `tbl_produk`;
 CREATE TABLE `tbl_produk` (
   `id_produk` int(255) NOT NULL,
   `nama_produk` text NOT NULL,
@@ -230,7 +234,7 @@ ALTER TABLE `tbl_produk`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(34) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_admin` int(34) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_harga`
@@ -242,7 +246,7 @@ ALTER TABLE `tbl_harga`
 -- AUTO_INCREMENT for table `tbl_member`
 --
 ALTER TABLE `tbl_member`
-  MODIFY `id_member` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_member` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tbl_order`
@@ -254,7 +258,7 @@ ALTER TABLE `tbl_order`
 -- AUTO_INCREMENT for table `tbl_pembayaran`
 --
 ALTER TABLE `tbl_pembayaran`
-  MODIFY `id_pembayaran` int(59) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_pembayaran` int(59) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tbl_produk`

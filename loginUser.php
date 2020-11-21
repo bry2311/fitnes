@@ -15,7 +15,7 @@
 <body class="hold-transition bg-success">
   <div class="login-box">
     <center>
-      <h2>Management Fitness</h2>
+      <h2>Fitness</h2>
       <h3></h3>
       <br/>
       <?php 
@@ -33,11 +33,11 @@
       ?>
     </center>
     <div class="login-box-body">
-      <p class="login-box-msg">HALAMAN LOGIN ADMIN</p>
+      <p class="login-box-msg">HALAMAN LOGIN USER</p>
 
-      <form action="login_act.php" method="POST">
+      <form action="login_act_user.php" method="POST">
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Username" name="username" required="required" autocomplete="off">
+          <input type="text" class="form-control" placeholder="08123456789" name="nomer" required="required" autocomplete="off">
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">

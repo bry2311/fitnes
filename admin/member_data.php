@@ -36,7 +36,7 @@
                     <th width="1%">No</th>                    
                     <th>Nomor Kartu</th>
                     <th>Nama</th>                    
-                                  
+                    <th>Nomer hp</th>                      
                     <th>Status member</th>                                        
                     <th width="20%">Opsi</th>                                        
                   </tr>
@@ -52,6 +52,7 @@
                       <td><?php echo $no++; ?></td>
                       <td><?php echo $d['kode_member']; ?></td>                      
                       <td><?php echo $d['nama_member']; ?></td>
+                      <td><?php echo $d['hp_member']; ?></td>
                    
                       <td> 
                       <?php
