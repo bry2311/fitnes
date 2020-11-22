@@ -39,7 +39,9 @@
               
               <?php 
                 include '../koneksi.php';
-                 $data3 = mysqli_query($koneksi,"SELECT * FROM tbl_order");
+                $tmpId = $_SESSION['id'];
+
+                 $data3 = mysqli_query($koneksi,"SELECT * FROM tbl_order WHERE status != 'order' AND id_customer = $tmpId");
                  $cx=mysqli_fetch_array($data3);
                  $hsx=mysqli_query($koneksi,"SELECT SUM(harga_order) FROM tbl_order");
                  $jumlah = mysqli_fetch_row($hsx);
@@ -70,8 +72,8 @@
                         <?php 
                          include '../koneksi.php';
                          $no=1;
-                        
-                         $data2 = mysqli_query($koneksi,"SELECT * FROM tbl_order WHERE status != 'order'");
+                        $tmpId = $_SESSION['id'];
+                         $data2 = mysqli_query($koneksi,"SELECT * FROM tbl_order WHERE status != 'order' AND id_customer = $tmpId");
                           while($d2 = mysqli_fetch_array($data2)){
                           ?>
                           <tr>
@@ -92,7 +94,8 @@
           
                     <textarea type="text" name="dibeli" hidden>
                     <?php 
-                      $datax = mysqli_query($koneksi,"SELECT * FROM tbl_order");
+                      $tmpId = $_SESSION['id'];
+                      $datax = mysqli_query($koneksi,"SELECT * FROM tbl_order WHERE status != 'order' AND id_customer = $tmpId");
                       while($dxs = mysqli_fetch_array($datax)){
                       echo $dxs['nama_order']."&nbsp;||&nbsp;"; 
                         }
@@ -126,7 +129,7 @@
           <div class="box-header">
             Paketan Gym
           </div>
-          <div class="box-body">
+          <!-- <div class="box-body">
           Member
           <select onchange="changeIdMember(this)">
             <option>-- Pilih Member --</option>
@@ -139,7 +142,7 @@
                 <option value="<?= $d['id_member'];?>"><?= $d['nama_member'];?></option>
               <?php };?>
               </select>
-          </div>
+          </div> -->
           <div class="box-body">
           <div class="table-responsive">
               <table class="table table-bordered table-striped" id="table-datatable">

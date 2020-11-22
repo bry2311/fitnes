@@ -15,7 +15,8 @@ mysqli_query($koneksi, "update tbl_member set paket_member='$paket_member', tgl_
 
 $paket_bayar=$ph['nilai_harga'];
 $ket_bayar="Perpanjangan member, paket ".$ph['kategori_harga'];
-mysqli_query($koneksi,"insert into tbl_pembayaran (tgl_pembayaran,jumlah_pembayaran,ket_pembayaran) values('$tgl_member','$paket_bayar','$ket_bayar')");
+mysqli_query($koneksi,"insert into tbl_pembayaran (tgl_pembayaran,jumlah_pembayaran,ket_pembayaran,id_member) values('$tgl_member','$paket_bayar','$ket_bayar','$id_member')");
+
 header("location:member_data.php?alert=update");
 
 

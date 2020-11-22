@@ -76,8 +76,9 @@
                         <?php 
                          include '../koneksi.php';
                          $no=1;
+                      $tmpId = $_SESSION['id'];
                         
-                         $data2 = mysqli_query($koneksi,"SELECT * FROM tbl_order WHERE status != 'order'");
+                         $data2 = mysqli_query($koneksi,"SELECT * FROM tbl_order WHERE status != 'order' AND id_customer = $tmpId");
                           while($d2 = mysqli_fetch_array($data2)){
                           ?>
                           <tr>
@@ -98,7 +99,9 @@
           
                     <textarea type="text" name="dibeli" hidden>
                     <?php 
-                      $datax = mysqli_query($koneksi,"SELECT * FROM tbl_order");
+                      $tmpId = $_SESSION['id'];
+
+                      $datax = mysqli_query($koneksi,"SELECT * FROM tbl_order WHERE status != 'order' AND id_customer = $tmpId");
                       while($dxs = mysqli_fetch_array($datax)){
                       echo $dxs['nama_order']."&nbsp;||&nbsp;"; 
                         }
@@ -116,60 +119,7 @@
               </form>
           </div>
       <br/>
-    </div>
-
-  </section>
-      <!-- end jumlah -->
-        <section class="col-lg-6 col-md-6 col-sm-12 col-12">
-        <?php 
-        if(isset($_GET['alert'])){
-          if($_GET['alert'] == "update"){
-            echo "<div class='alert alert-success text-center'>Profil telah diupdate.</div>";
-          }
-        }
-        ?>
-        <div class="box box-info">
-          <div class="box-header">
-            Paketan Gym
           </div>
-          <div class="box-body">
-          <div class="table-responsive">
-              <table class="table table-bordered table-striped" id="table-datatable">
-                <thead>
-                  <tr>
-                    <th width="1%">No</th>                    
-                    <th>Paket</th>
-                    <th>Harga</th> 
-                                   
-                    <th width="10%">Opsi</th>                                        
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php 
-                  include '../koneksi.php';
-                  $no=1;
-                  $data = mysqli_query($koneksi,"SELECT * FROM tbl_harga");
-                  while($d = mysqli_fetch_array($data)){
-                    ?>
-                    <tr>
-                      <td><?php echo $no++; ?></td>
-                      <td><?php echo $d['kategori_harga']; ?></td>                      
-                      <td>Rp.<?php echo number_format($d['nilai_harga']); ?></td>
-                      <td>
-                        <a title="hapus" class="btn btn-success btn-sm" href="keranjang_act_paket.php?id=<?php echo $d['id_harga'] ?>"><i class="fa fa-plus" aria-hidden="true"></i></a>              
-                      </td>                                          
-                    </tr>
-                    <?php 
-                  }
-                  ?>
-                </tbody>
-              </table>
-            </div>
-          </div>
-      <br/>
-    </div>
-
-  </section>
 <!-- end pakeetan harga -->
 
   <section class="col-lg-6 col-md-6 col-sm-12 col-12">

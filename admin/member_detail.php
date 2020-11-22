@@ -133,7 +133,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Pepanjang Paket Member</h4>
+        <h4 class="modal-title">Perpanjang Paket Member</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -144,6 +144,11 @@
             <div class="form-group">
                   <input type="text" name="id_member_panjang" value="<?php echo $id; ?>" hidden>
                 <label for="inputEmail3" class="control-label">Paket</label>
+                        <?php
+             $id = $_GET['id'];
+                        
+                        ?>
+                        <input type="hidden" name="id_member" value="<?= $id ;?>">
                   <select name="paket_member_panjang" class="form-control"  required="required">
                   <option value="">--Pilih Paket--</option>
                   <?php
