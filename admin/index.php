@@ -63,7 +63,7 @@
                          include '../koneksi.php';
                          $no=1;
                         
-                         $data2 = mysqli_query($koneksi,"SELECT * FROM tbl_order");
+                         $data2 = mysqli_query($koneksi,"SELECT * FROM tbl_order WHERE status != 'order'");
                           while($d2 = mysqli_fetch_array($data2)){
                           ?>
                           <tr>
@@ -195,8 +195,6 @@
                       <td><?php echo $d1['kode_produk']; ?></td>
                       <td><?php echo $d1['nama_produk']; ?></td>                      
                       <td>Rp.<?php echo number_format($d1['harga_produk']); ?></td>
-                   
-                     
                       <td>
                         <a title="Keranjang" class="btn btn-success btn-sm" href="keranjang_act_produk.php?id=<?php echo $d1['kode_produk'] ?>"><i class="fa fa-plus" aria-hidden="true"></i></a>              
                       </td>                                          

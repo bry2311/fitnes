@@ -52,20 +52,16 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">               
                 <?php 
                 $x = $_SESSION['id'];
-                $ad = mysqli_query($koneksi,"SELECT * FROM admin WHERE id_admin='$x'");
+                $ad = mysqli_query($koneksi,"SELECT * FROM tbl_member WHERE id_member='$x'");
                 $aa = mysqli_fetch_assoc($ad);
                 ?>
-                <?php if($aa['foto_admin']!="" && file_exists("../images/main_gambar/".$aa['foto_admin'])){ ?>
-                  <img src="../images/main_gambar/<?php echo $aa['foto_admin']; ?>" class="user-image">
-                <?php }else{ ?>
                   <img src="../assets/dist/img/avatar5.png" class="user-image">
-                <?php } ?>
-                <span class="hidden-xs">NAMA : <?php echo $aa['nama_admin']; ?> </span> 
+                <span class="hidden-xs">NAMA : <?php echo $aa['nama_member']; ?> </span> 
               </a>
             </li>
 
             <li class="dropdown user user-menu active">
-              <a target="_BLANK" href="#">Admin</a>
+              <a target="_BLANK" href="#">Member</a>
             </li>
             <li>
               <a href="logout.php"><i class="fa fa-sign-out"></i> KELUAR</a>
@@ -94,18 +90,13 @@
             </a>
           </li>
           <li>
+            <a href="order_data.php">
+             <i class="fa fa-id-card" aria-hidden="true"></i> <span>Order</span>
+            </a>
+          </li> 
+          <li>
             <a href="transaksi_data.php">
              <i class="fa fa-id-card" aria-hidden="true"></i> <span>Transaksi</span>
-            </a>
-          </li> 
-          <li>
-            <a href="member_data.php">
-             <i class="fa fa-users" aria-hidden="true"></i> <span>Member</span>
-            </a>
-          </li> 
-          <li>
-            <a href="product_data.php">
-             <i class="fa fa-archive" aria-hidden="true"></i> <span>Produk & Paket Harga</span>
             </a>
           </li> 
           <li class="treeview">
@@ -121,11 +112,6 @@
               <li><a href="ganti_pass.php"><i class="fa fa-circle-o"></i> Ganti Password</a></li>
             </ul>
           </li> 
-
-       
-       
-           
-        
           <li>
             <a href="logout.php">
               <i class="fa fa-sign-out"></i> <span>KELUAR</span>

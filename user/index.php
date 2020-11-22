@@ -21,6 +21,19 @@
         }
         ?>
         <div class="box box-info">
+          <?php 
+            include '../koneksi.php';
+              $tmpId = $_SESSION['id'];
+              $tmpMember = mysqli_query($koneksi,"SELECT * FROM tbl_member WHERE id_member = $tmpId");
+              $member=mysqli_fetch_array($tmpMember);
+          ?>
+          <div class="box-header">
+            <p>Status Member <?= $member['status_member'];?></p>
+            <p>Berlaku Sejak = <?= $member['tgl_member']?></p>
+            <p>Berlaku Sampai = <?= $member['berlaku_member']?></p>
+          </div>
+        </div>
+        <div class="box box-info">
           <div class="box-header">
           Transaksi User
           </div>
@@ -33,7 +46,8 @@
                 include '../koneksi.php';
                  $data3 = mysqli_query($koneksi,"SELECT * FROM tbl_order");
                  $cx=mysqli_fetch_array($data3);
-                 $hsx=mysqli_query($koneksi,"SELECT SUM(harga_order) FROM tbl_order");
+                $tmpId = $_SESSION['id'];
+                 $hsx=mysqli_query($koneksi,"SELECT SUM(harga_order) FROM tbl_order WHERE id_customer = $tmpId AND status = 'keranjang'");
                  $jumlah = mysqli_fetch_row($hsx);
                  $total = $jumlah[0];
 
@@ -63,7 +77,7 @@
                          include '../koneksi.php';
                          $no=1;
                         
-                         $data2 = mysqli_query($koneksi,"SELECT * FROM tbl_order");
+                         $data2 = mysqli_query($koneksi,"SELECT * FROM tbl_order WHERE status != 'order'");
                           while($d2 = mysqli_fetch_array($data2)){
                           ?>
                           <tr>

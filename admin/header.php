@@ -94,6 +94,11 @@
             </a>
           </li>
           <li>
+            <a href="order_data.php">
+             <i class="fa fa-id-card" aria-hidden="true"></i> <span>Order</span>
+            </a>
+          </li>
+          <li>
             <a href="transaksi_data.php">
              <i class="fa fa-id-card" aria-hidden="true"></i> <span>Transaksi</span>
             </a>

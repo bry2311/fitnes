@@ -1,13 +1,12 @@
 <?php
 include '../koneksi.php';
 session_start();
-
 if(isset($_GET['id'])) {
 
 	$tbl_member = "SELECT * FROM tbl_harga WHERE id_harga=".$_GET['id'];
 	$rp = mysqli_query($koneksi, $tbl_member);
     $member = mysqli_fetch_array($rp); 
-    $id = $_GET['id'];
+    $id = $_SESSION['id'];
     $nama= $member['kategori_harga'];
 	$kode= $member['id_harga'];
 	$harga= $member['nilai_harga'];
