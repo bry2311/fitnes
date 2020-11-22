@@ -1,4 +1,12 @@
 <?php include 'header.php'; ?>
+<script type="text/javascript">
+  var x = 0;
+  function changeIdMember(selectObject){
+    var value = selectObject.value;  
+    alert(x);
+
+  }
+</script>
 <div class="content-wrapper" ng-app="">
   <section class="content-header">
     <h1>
@@ -117,6 +125,20 @@
         <div class="box box-info">
           <div class="box-header">
             Paketan Gym
+          </div>
+          <div class="box-body">
+          Member
+          <select onchange="changeIdMember(this)">
+            <option>-- Pilih Member --</option>
+            <?php 
+              include '../koneksi.php';
+              $no=1;
+              $data = mysqli_query($koneksi,"SELECT * FROM tbl_member WHERE status_member = 'aktif'");
+              while($d = mysqli_fetch_array($data)){
+              ?>
+                <option value="<?= $d['id_member'];?>"><?= $d['nama_member'];?></option>
+              <?php };?>
+              </select>
           </div>
           <div class="box-body">
           <div class="table-responsive">

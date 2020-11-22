@@ -63,6 +63,18 @@
                 <input type="number" class="form-control" name="nohp_member" >
               </div>
             </div>  
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" name="email" placeholder="johnDoe@gmail.com">
+              </div>
+            </div>  
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Lahir</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" name="tanggal_lahir" >
+              </div>
+            </div>  
 
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-2 control-label">Paket Member</label>
