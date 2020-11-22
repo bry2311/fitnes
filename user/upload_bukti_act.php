@@ -28,4 +28,5 @@ if ($uploadOk == 0) {
 $id = $_SESSION['id'];
 mysqli_query($koneksi,"insert into tbl_bukti (bukti,id_member) values('$name','$id')");
 header("location:order_data.php?alert=update");
+//update
 ?>
