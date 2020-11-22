@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 22, 2020 at 09:25 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.3.22
+-- Host: localhost
+-- Generation Time: Nov 22, 2020 at 02:30 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -61,6 +62,13 @@ CREATE TABLE `tbl_bukti` (
   `id_member` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_bukti`
+--
+
+INSERT INTO `tbl_bukti` (`id`, `bukti`, `id_member`) VALUES
+(3, 'baymax.jpg', 35);
+
 -- --------------------------------------------------------
 
 --
@@ -113,7 +121,9 @@ CREATE TABLE `tbl_member` (
 --
 
 INSERT INTO `tbl_member` (`id_member`, `kode_member`, `nama_member`, `alamat_member`, `jk_member`, `hp_member`, `paket_member`, `tgl_member`, `berlaku_member`, `status_member`, `password`, `email`, `tanggal_ultah`) VALUES
-(35, '7733', 'test', 'test', 'wanita', '123', '4', '2020-11-21', '2020-12-21', 'aktif', '81dc9bdb52d04dc20036dbd8313ed055', 'quoc@k.com', '2020-11-14');
+(35, '7733', 'test', 'test', 'wanita', '123', '4', '2020-11-22', '2020-12-22', 'aktif', '81dc9bdb52d04dc20036dbd8313ed055', 'quoc@k.com', '2020-11-14'),
+(36, '3618', 'test 2', 'test', 'pria', '1234', '5', '2020-11-22', '2021-02-20', 'aktif', '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL),
+(37, '2614', 'test aja', 'test', 'pria', '081', '4', '2020-11-22', '2020-12-22', 'aktif', '13c022b0b3f191667e834e0e155b0651', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -131,6 +141,14 @@ CREATE TABLE `tbl_order` (
   `id_customer` int(11) NOT NULL,
   `status` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`id_order`, `kode_order`, `nama_order`, `harga_order`, `jenis_order`, `id_customer`, `status`) VALUES
+(95, '39735', 'Whey Protein 500ml', '75000', 'produk', 2, 'order'),
+(96, '1', 'Harian', '8000', 'paket', 2, 'order');
 
 -- --------------------------------------------------------
 
@@ -153,7 +171,13 @@ CREATE TABLE `tbl_pembayaran` (
 
 INSERT INTO `tbl_pembayaran` (`id_pembayaran`, `id_member`, `tgl_pembayaran`, `jumlah_pembayaran`, `ket_pembayaran`) VALUES
 (31, '35', '2020-11-22', '8000', 'Harian'),
-(32, '35', '2020-11-22', '75000', 'Whey Protein 500ml');
+(32, '35', '2020-11-22', '75000', 'Whey Protein 500ml'),
+(33, '36', '2020-11-22', '380000', 'Daftar member baru, paket 3 Bulan'),
+(34, '35', '2020-11-22', '8000', 'Harian'),
+(35, '37', '2020-11-22', '140000', 'Daftar member baru, paket 1 Bulan'),
+(36, '35', '2020-11-22', '75000', 'Whey Protein 500ml'),
+(37, '35', '2020-11-22', '123', 'Galon'),
+(38, '', '2020-11-22', '140000', 'Perpanjangan member, paket 1 Bulan');
 
 -- --------------------------------------------------------
 
@@ -265,7 +289,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `tbl_bukti`
 --
 ALTER TABLE `tbl_bukti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_harga`
@@ -277,19 +301,19 @@ ALTER TABLE `tbl_harga`
 -- AUTO_INCREMENT for table `tbl_member`
 --
 ALTER TABLE `tbl_member`
-  MODIFY `id_member` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_member` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id_order` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id_order` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `tbl_pembayaran`
 --
 ALTER TABLE `tbl_pembayaran`
-  MODIFY `id_pembayaran` int(59) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_pembayaran` int(59) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `tbl_produk`
