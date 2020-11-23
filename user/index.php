@@ -20,17 +20,34 @@
           }
         }
         ?>
+          <?php 
+            include '../koneksi.php';
+            $tmpId = $_SESSION['id'];
+            $tmpMember = mysqli_query($koneksi,"SELECT * FROM tbl_member WHERE id_member = $tmpId limit 1");
+            $member=mysqli_fetch_array($tmpMember);
+            $berlaku = $member['berlaku_member'];
+            $ultah = $member['tanggal_ultah'];
+            $bulanBerlaku = date("m",strtotime($berlaku));
+            $bulanUltah = date("m",strtotime($ultah));
+            if($bulanBerlaku == $bulanUltah){
+              ?>
+        <div class="box box-info">
+          <div class="box-header">
+            <p>Selamat berulang tahun! Anda mendapatkan kesempatan diskon 15% pada bulan ini sebagai hadiah dari kami :). Silahkan hubungi admin untuk proses lebih lanjut ya :)</p>
+          </div>
+        </div>
+            <?php }; ?>
         <div class="box box-info">
           <?php 
             include '../koneksi.php';
               $tmpId = $_SESSION['id'];
-              $tmpMember = mysqli_query($koneksi,"SELECT * FROM tbl_member WHERE id_member = $tmpId");
+              $tmpMember = mysqli_query($koneksi,"SELECT * FROM tbl_member WHERE id_member = $tmpId limit 1");
               $member=mysqli_fetch_array($tmpMember);
           ?>
           <div class="box-header">
             <p>Status Member <?= $member['status_member'];?></p>
-            <p>Berlaku Sejak = <?= $member['tgl_member']?></p>
-            <p>Berlaku Sampai = <?= $member['berlaku_member']?></p>
+            <p>Berlaku Sejak = <?= $member['tgl_member'];?></p>
+            <p>Berlaku Sampai = <?= $member['berlaku_member'];?></p>
           </div>
         </div>
         <div class="box box-info">
@@ -151,7 +168,7 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data1 = mysqli_query($koneksi,"SELECT * FROM tbl_produk");
+                  $data1 = mysqli_query($koneksi,"SELECT * FROM tbl_produk WHERE kategori = 'online'");
                   while($d1 = mysqli_fetch_array($data1)){
                     ?>
                     <tr>

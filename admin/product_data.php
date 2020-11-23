@@ -83,9 +83,9 @@
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $d['kategori_harga']; ?></td>                      
                                             <td>Rp.&nbsp;<?php echo number_format($d['nilai_harga']); ?></td>
-                                
                                             <td> <?php echo $d['hari_harga']; ?> Hari </td>
-                                            <td>                    
+                                            <td>                 
+                                                <a title="ubah paket" class="btn btn-warning btn-sm" href="paket_detail.php?id=<?php echo $d['id_harga'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>              
                                                 <a title="hapus harga" class="btn btn-danger btn-sm" href="kategori_paket_hapus.php?id=<?php echo $d['id_harga'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>              
                                             </td>                                          
                                             </tr>
@@ -143,7 +143,13 @@
                                     <label for="inputEmail3">Harga produk</label>
                                     <input type="number" class="form-control" required="required" name="harga_produk" >
                                 </div>
-
+                                <div class="form-group">
+                                    <label for="inputEmail3">Kategori produk</label>
+                                    <select name="kategori" class="form-control" required="required">
+                                        <option value="online">online</option>
+                                        <option value="offline">offline</option>
+                                    </select>
+                                </div>
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -168,6 +174,7 @@
                                             <th>Kode produk</th>                
                                             <th>Nama produk</th>
                                             <th>Harga produk</th>                
+                                            <th>Kategori produk</th>                
                                             <th width="20%">Opsi</th>                                        
                                         </tr>
                                         </thead>
@@ -183,9 +190,9 @@
                                             <td> <?php echo $d['kode_produk']; ?></td>
                                             <td><?php echo $d['nama_produk']; ?></td>                      
                                             <td>Rp.&nbsp;<?php echo number_format($d['harga_produk']); ?></td>
-                                
+                                            <td><?php echo $d['kategori']; ?></td>                      
                                             <td>    
-                                            <a title="ubah produk" class="btn btn-warning btn-sm" href="kategori_paket_hapus.php?id=<?php echo $d['id_produk'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>              
+                                                <a title="ubah produk" class="btn btn-warning btn-sm" href="product_detail.php?id=<?php echo $d['id_produk'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>              
                                                 <a title="hapus produk" class="btn btn-danger btn-sm" href="product_hapus.php?id=<?php echo $d['id_produk'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>              
                                             </td>                                          
                                             </tr>

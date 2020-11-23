@@ -50,7 +50,7 @@
                   <?php 
                   include '../koneksi.php';
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT * FROM tbl_pembayaran ORDER BY id_pembayaran DESC");
+                  $data = mysqli_query($koneksi,"SELECT * FROM tbl_pembayaran WHERE id_member = $tmpId ORDER BY id_pembayaran DESC");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
