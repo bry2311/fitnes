@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 22, 2020 at 02:30 PM
+-- Generation Time: Nov 23, 2020 at 02:30 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -47,7 +47,7 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id_admin`, `user_admin`, `nama_admin`, `pass_admin`, `lvl_admin`, `foto_admin`, `status_admin`) VALUES
 (1, 'admin', 'Reynhard Sianagas', '21232f297a57a5a743894a0e4a801fc3', '1', '', 'aktif'),
-(2, 'test', 'test', '202cb962ac59075b964b07152d234b70', '1', '', 'aktif');
+(2, 'test', 'admin2', '202cb962ac59075b964b07152d234b70', '1', '', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -121,7 +121,8 @@ CREATE TABLE `tbl_member` (
 --
 
 INSERT INTO `tbl_member` (`id_member`, `kode_member`, `nama_member`, `alamat_member`, `jk_member`, `hp_member`, `paket_member`, `tgl_member`, `berlaku_member`, `status_member`, `password`, `email`, `tanggal_ultah`) VALUES
-(35, '7733', 'test', 'test', 'wanita', '123', '4', '2020-11-22', '2020-12-22', 'aktif', '81dc9bdb52d04dc20036dbd8313ed055', 'quoc@k.com', '2020-11-14'),
+(2, '9999', 'admin2', 'admin2', 'Perempuan', '12345678', '1', '2020-11-23', '2020-11-23', 'aktif', '202cb962ac59075b964b07152d234b70', 'test@gmail.com', '2019-11-11'),
+(35, '7733', 'test', 'test', 'wanita', '123', '4', '2020-11-22', '2020-12-22', 'aktif', '81dc9bdb52d04dc20036dbd8313ed055', 'quoc@k.com', '2020-12-14'),
 (36, '3618', 'test 2', 'test', 'pria', '1234', '5', '2020-11-22', '2021-02-20', 'aktif', '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL),
 (37, '2614', 'test aja', 'test', 'pria', '081', '4', '2020-11-22', '2020-12-22', 'aktif', '13c022b0b3f191667e834e0e155b0651', NULL, NULL);
 
@@ -147,8 +148,7 @@ CREATE TABLE `tbl_order` (
 --
 
 INSERT INTO `tbl_order` (`id_order`, `kode_order`, `nama_order`, `harga_order`, `jenis_order`, `id_customer`, `status`) VALUES
-(95, '39735', 'Whey Protein 500ml', '75000', 'produk', 2, 'order'),
-(96, '1', 'Harian', '8000', 'paket', 2, 'order');
+(97, '39735', 'Whey Protein 500ml', '75000', 'produk', 35, 'keranjang');
 
 -- --------------------------------------------------------
 
@@ -177,7 +177,15 @@ INSERT INTO `tbl_pembayaran` (`id_pembayaran`, `id_member`, `tgl_pembayaran`, `j
 (35, '37', '2020-11-22', '140000', 'Daftar member baru, paket 1 Bulan'),
 (36, '35', '2020-11-22', '75000', 'Whey Protein 500ml'),
 (37, '35', '2020-11-22', '123', 'Galon'),
-(38, '', '2020-11-22', '140000', 'Perpanjangan member, paket 1 Bulan');
+(38, '35', '2020-11-22', '140000', 'Perpanjangan member, paket 1 Bulan'),
+(39, '2', '2020-11-23', '75000', 'Whey Protein 500ml'),
+(40, '2', '2020-11-23', '8000', 'Harian'),
+(41, '2', '2020-11-23', '8000', 'Harian'),
+(42, '2', '2020-11-23', '123', 'Galon'),
+(43, '2', '2020-11-23', '75000', 'Whey Protein 500ml'),
+(44, '2', '2020-11-23', '75000', 'Whey Protein 500ml'),
+(45, '2', '2020-11-23', '8000', 'Harian'),
+(46, '2', '2020-11-23', '75000', 'Whey Protein 500ml');
 
 -- --------------------------------------------------------
 
@@ -212,16 +220,18 @@ CREATE TABLE `tbl_produk` (
   `id_produk` int(255) NOT NULL,
   `nama_produk` text NOT NULL,
   `harga_produk` text NOT NULL,
-  `kode_produk` text NOT NULL
+  `kode_produk` text NOT NULL,
+  `kategori` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_produk`
 --
 
-INSERT INTO `tbl_produk` (`id_produk`, `nama_produk`, `harga_produk`, `kode_produk`) VALUES
-(2, 'Whey Protein 500ml', '75000', '39735'),
-(4, 'Galon', '123', '25187');
+INSERT INTO `tbl_produk` (`id_produk`, `nama_produk`, `harga_produk`, `kode_produk`, `kategori`) VALUES
+(2, 'Whey Protein 500ml', '75000', '39735', 'online'),
+(4, 'Galon', '123', '25187', 'offline'),
+(6, 'test', '1000', '60753', 'offline');
 
 --
 -- Indexes for dumped tables
@@ -307,19 +317,19 @@ ALTER TABLE `tbl_member`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id_order` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id_order` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `tbl_pembayaran`
 --
 ALTER TABLE `tbl_pembayaran`
-  MODIFY `id_pembayaran` int(59) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_pembayaran` int(59) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `tbl_produk`
 --
 ALTER TABLE `tbl_produk`
-  MODIFY `id_produk` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_produk` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
