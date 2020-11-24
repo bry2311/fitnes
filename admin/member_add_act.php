@@ -9,6 +9,8 @@ $alamat_member=$_POST['alamat_member'];
 $jk_member=$_POST['jk_member'];
 $nohp_member=$_POST['nohp_member'];
 $paket_member=$_POST['paket_member'];
+$email=$_POST['email'];
+$ultah=$_POST['ultah'];
 $status="aktif";
 $paket_harga = mysqli_query($koneksi, "select * from tbl_harga where id_harga='$paket_member'");
 $ph = mysqli_fetch_array($paket_harga);
@@ -17,8 +19,8 @@ $d1='+'.$ph['hari_harga'].'days';
 $berlaku_member=date('Y-m-d', strtotime($tgl_member. $d1));
 $password = md5($nohp_member);
 $ret = mysqli_query($koneksi, "insert into tbl_member 
-(kode_member,nama_member,alamat_member,jk_member,hp_member,paket_member,tgl_member,berlaku_member,status_member,password) values 
-('$kode_member','$nama_member','$alamat_member','$jk_member','$nohp_member','$paket_member','$tgl_member','$berlaku_member','$status','$password')");	
+(kode_member,nama_member,alamat_member,jk_member,hp_member,paket_member,tgl_member,berlaku_member,status_member,password,email,tanggal_ultah) values 
+('$kode_member','$nama_member','$alamat_member','$jk_member','$nohp_member','$paket_member','$tgl_member','$berlaku_member','$status','$password','$email','$ultah')");	
 $paket_bayar=$ph['nilai_harga'];
 $ket_bayar="Daftar member baru, paket ".$ph['kategori_harga'];
 $lastMember = mysqli_query($koneksi, "select max(id_member) as max from tbl_member");

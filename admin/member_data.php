@@ -20,7 +20,14 @@
           echo "<div class='alert alert-success text-center'>Data member telah disimpan.</div>";
         }
       }
+      if(isset($_GET['status'])){
+        echo "<div class='alert alert-success text-center'>".$_GET['status']."</div>";
+      }
+
       ?>
+      <div class="box box-info">
+        <a title="lihat detail" class="btn btn-success btn-sm" href="member_send_all.php" style="width:100%"><i class="fa fa-envelope"></i></a>                 
+      </div>
       <div class="box box-info">
         <div class="box-header">
           <h3 class="box-title">Semua data Member </h3>
@@ -37,7 +44,9 @@
                     <th>Nomor Kartu</th>
                     <th>Nama</th>                    
                     <th>Nomer hp</th>                      
+                    <th>Email</th>                      
                     <th>Status member</th>                                        
+                    <th>Berlaku hingga</th>                                        
                     <th width="20%">Opsi</th>                                        
                   </tr>
                 </thead>
@@ -53,6 +62,7 @@
                       <td><?php echo $d['kode_member']; ?></td>                      
                       <td><?php echo $d['nama_member']; ?></td>
                       <td><?php echo $d['hp_member']; ?></td>
+                      <td><?php echo $d['email']; ?></td>
                    
                       <td> 
                       <?php
@@ -69,9 +79,11 @@
                         ?>                                              
                                             
                       </td>
+                      <td><?php echo $d['berlaku_member']; ?></td>
+
                       <td>
                       <a title="lihat detail" class="btn btn-success btn-sm" href="member_detail.php?id=<?php echo $d['id_member'] ?>"><i class="fa fa-search"></i></a>              
-
+                      <a title="lihat detail" class="btn btn-success btn-sm" href="member_send.php?id=<?php echo $d['id_member'] ?>"><i class="fa fa-envelope"></i></a>  
                         <a title="hapus member" class="btn btn-danger btn-sm" href="member_hapus.php?id=<?php echo $d['id_member'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>              
                       </td>                                          
                     </tr>
