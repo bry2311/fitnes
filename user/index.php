@@ -193,6 +193,70 @@
     </div>
 
   </section>
+  <section class="col-lg-6 col-md-6 col-sm-12 col-12">
+        <?php 
+        if(isset($_GET['alert'])){
+          if($_GET['alert'] == "update"){
+            echo "<div class='alert alert-success text-center'>Profil telah diupdate.</div>";
+          }
+        }
+        ?>
+        <div class="box box-info">
+          <div class="box-header">
+            Paketan Gym
+          </div>
+          <!-- <div class="box-body">
+          Member
+          <select onchange="changeIdMember(this)">
+            <option>-- Pilih Member --</option>
+            <?php 
+              include '../koneksi.php';
+              $no=1;
+              $data = mysqli_query($koneksi,"SELECT * FROM tbl_member WHERE status_member = 'aktif'");
+              while($d = mysqli_fetch_array($data)){
+              ?>
+                <option value="<?= $d['id_member'];?>"><?= $d['nama_member'];?></option>
+              <?php };?>
+              </select>
+          </div> -->
+          <div class="box-body">
+          <div class="table-responsive">
+              <table class="table table-bordered table-striped" id="table-datatable">
+                <thead>
+                  <tr>
+                    <th width="1%">No</th>                    
+                    <th>Paket</th>
+                    <th>Harga</th> 
+                                   
+                    <th width="10%">Opsi</th>                                        
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php 
+                  include '../koneksi.php';
+                  $no=1;
+                  $data = mysqli_query($koneksi,"SELECT * FROM tbl_harga");
+                  while($d = mysqli_fetch_array($data)){
+                    ?>
+                    <tr>
+                      <td><?php echo $no++; ?></td>
+                      <td><?php echo $d['kategori_harga']; ?></td>                      
+                      <td>Rp.<?php echo number_format($d['nilai_harga']); ?></td>
+                      <td>
+                        <a title="hapus" class="btn btn-success btn-sm" href="keranjang_act_paket.php?id=<?php echo $d['id_harga'] ?>"><i class="fa fa-plus" aria-hidden="true"></i></a>              
+                      </td>                                          
+                    </tr>
+                    <?php 
+                  }
+                  ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+      <br/>
+    </div>
+
+  </section>
   </div>
   </section>
 </div>
