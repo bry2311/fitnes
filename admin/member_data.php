@@ -27,6 +27,7 @@
       ?>
       <div class="box box-info">
         <a title="lihat detail" class="btn btn-success btn-sm" href="member_send_all.php" style="width:100%"><i class="fa fa-envelope"></i></a>                 
+        <a title="lihat detail" class="btn btn-danger btn-sm" href="member_custom_message.php" style="width:100%"><i class="fa fa-envelope"></i></a>                 
       </div>
       <div class="box box-info">
         <div class="box-header">
