@@ -145,8 +145,7 @@
                   <input type="text" name="id_member_panjang" value="<?php echo $id; ?>" hidden>
                 <label for="inputEmail3" class="control-label">Paket</label>
                         <?php
-             $id = $_GET['id'];
-                        
+                          $id = $_SESSION['id'];
                         ?>
                         <input type="hidden" name="id_member" value="<?= $id ;?>">
                   <select name="paket_member_panjang" class="form-control"  required="required">

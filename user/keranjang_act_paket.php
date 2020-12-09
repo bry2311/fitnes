@@ -2,8 +2,8 @@
 include '../koneksi.php';
 session_start();
 if(isset($_GET['id'])) {
-
-	$tbl_member = "SELECT * FROM tbl_harga WHERE id_harga=".$_GET['id'];
+	$id_paket = $_GET['id'];
+	$tbl_member = "SELECT * FROM tbl_harga WHERE id_harga=$id_paket";
 	$rp = mysqli_query($koneksi, $tbl_member);
     $member = mysqli_fetch_array($rp); 
     $id = $_SESSION['id'];

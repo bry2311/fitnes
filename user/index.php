@@ -48,6 +48,10 @@
             <p>Status Member <?= $member['status_member'];?></p>
             <p>Berlaku Sejak = <?= $member['tgl_member'];?></p>
             <p>Berlaku Sampai = <?= $member['berlaku_member'];?></p>
+            <div class="box-footer">
+            <!-- <a href="" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Ubah Data</a> -->
+            <a href="#modelId" data-toggle="modal"  class="btn btn-danger pull-right">Perpanjang Member&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
           </div>
         </div>
         <div class="box box-info">
@@ -193,71 +197,52 @@
     </div>
 
   </section>
-  <section class="col-lg-6 col-md-6 col-sm-12 col-12">
-        <?php 
-        if(isset($_GET['alert'])){
-          if($_GET['alert'] == "update"){
-            echo "<div class='alert alert-success text-center'>Profil telah diupdate.</div>";
-          }
-        }
-        ?>
-        <div class="box box-info">
-          <div class="box-header">
-            Paketan Gym
-          </div>
-          <!-- <div class="box-body">
-          Member
-          <select onchange="changeIdMember(this)">
-            <option>-- Pilih Member --</option>
-            <?php 
-              include '../koneksi.php';
-              $no=1;
-              $data = mysqli_query($koneksi,"SELECT * FROM tbl_member WHERE status_member = 'aktif'");
-              while($d = mysqli_fetch_array($data)){
-              ?>
-                <option value="<?= $d['id_member'];?>"><?= $d['nama_member'];?></option>
-              <?php };?>
-              </select>
-          </div> -->
-          <div class="box-body">
-          <div class="table-responsive">
-              <table class="table table-bordered table-striped" id="table-datatable">
-                <thead>
-                  <tr>
-                    <th width="1%">No</th>                    
-                    <th>Paket</th>
-                    <th>Harga</th> 
-                                   
-                    <th width="10%">Opsi</th>                                        
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php 
-                  include '../koneksi.php';
-                  $no=1;
-                  $data = mysqli_query($koneksi,"SELECT * FROM tbl_harga");
-                  while($d = mysqli_fetch_array($data)){
-                    ?>
-                    <tr>
-                      <td><?php echo $no++; ?></td>
-                      <td><?php echo $d['kategori_harga']; ?></td>                      
-                      <td>Rp.<?php echo number_format($d['nilai_harga']); ?></td>
-                      <td>
-                        <a title="hapus" class="btn btn-success btn-sm" href="keranjang_act_paket.php?id=<?php echo $d['id_harga'] ?>"><i class="fa fa-plus" aria-hidden="true"></i></a>              
-                      </td>                                          
-                    </tr>
-                    <?php 
-                  }
-                  ?>
-                </tbody>
-              </table>
-            </div>
-          </div>
-      <br/>
-    </div>
-
-  </section>
+  
   </div>
   </section>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Perpanjang Paket Member</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <form class="form-horizontal" action="perpanjang_paket.php" method="post">
+      <div class="modal-body">
+          <div class="box-body">
+            <div class="form-group">
+            <?php
+             $id = $_SESSION['id'];    
+            ?>
+                  <input type="text" name="id_member_panjang" value="<?php echo $id; ?>" hidden>
+                <label for="inputEmail3" class="control-label">Paket</label>
+        
+                        <input type="hidden" name="id_member" value="<?= $id ;?>">
+                  <select name="paket_member_panjang" class="form-control"  required="required">
+                  <option value="">--Pilih Paket--</option>
+                  <?php
+                    $paket_harga = mysqli_query($koneksi, "select * from tbl_harga");
+                    while($ph = mysqli_fetch_array($paket_harga)){
+                      ?>
+                      <option value="<?php echo $ph['id_harga'] ?>"><?php echo $ph['kategori_harga']; ?> @Rp.<?php echo number_format($ph['nilai_harga'])?></option>
+                      <?php
+                    }
+                   ?>
+                 </select>
+            </div>  
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--end perpanjang modal -->
 <?php include 'footer.php'; ?>
