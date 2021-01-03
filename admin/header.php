@@ -109,6 +109,11 @@
             </a>
           </li> 
           <li>
+            <a href="instruktur_data.php">
+             <i class="fa fa-users" aria-hidden="true"></i> <span>Instruktur</span>
+            </a>
+          </li> 
+          <li>
             <a href="product_data.php">
              <i class="fa fa-archive" aria-hidden="true"></i> <span>Produk & Paket Harga</span>
             </a>
