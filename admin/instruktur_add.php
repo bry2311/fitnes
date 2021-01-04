@@ -36,6 +36,12 @@
                 <input type="text" class="form-control" required="required" name="nama_instruktur" placeholder="nama">
               </div>
             </div>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">Foto</label>
+              <div class="col-sm-10">
+                <input type="file" required="required" name="foto" placeholder="foto">
+              </div>
+            </div>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">

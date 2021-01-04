@@ -39,6 +39,7 @@
                   <tr>
                     <th width="1%">No</th>        
                     <th>Nama</th>                                                   
+                    <th>Foto</th>                                                   
                     <th width="20%">Opsi</th>                                        
                   </tr>
                 </thead>
@@ -52,6 +53,7 @@
                     <tr>
                       <td><?php echo $no++; ?></td>                   
                       <td><?php echo $d['name']; ?></td>
+                      <td><img src="../assets/photos/<?php echo $d['photo'];?>" style="width:100px;height:100px"></td>
 
                       <td>
                         <a title="lihat detail" class="btn btn-success btn-sm" href="instruktur_detail.php?id=<?php echo $d['id'] ?>"><i class="fa fa-search"></i></a>   
