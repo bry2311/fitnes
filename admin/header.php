@@ -112,6 +112,11 @@
             <a href="instruktur_data.php">
              <i class="fa fa-users" aria-hidden="true"></i> <span>Instruktur</span>
             </a>
+          </li>
+          <li>
+            <a href="jadwal_data.php">
+             <i class="fa fa-book" aria-hidden="true"></i> <span>Jadwal Instruktur</span>
+            </a>
           </li> 
           <li>
             <a href="product_data.php">
@@ -130,12 +135,7 @@
               <li><a href="profile.php"><i class="fa fa-circle-o"></i> Profile</a></li>  
               <li><a href="ganti_pass.php"><i class="fa fa-circle-o"></i> Ganti Password</a></li>
             </ul>
-          </li> 
-
-       
-       
-           
-        
+          </li>
           <li>
             <a href="logout.php">
               <i class="fa fa-sign-out"></i> <span>KELUAR</span>
