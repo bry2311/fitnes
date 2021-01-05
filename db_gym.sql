@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2020 at 05:48 PM
+-- Generation Time: Jan 05, 2021 at 07:21 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -87,6 +87,68 @@ INSERT INTO `tbl_harga` (`id_harga`, `kategori_harga`, `nilai_harga`, `hari_harg
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_instruktur`
+--
+
+DROP TABLE IF EXISTS `tbl_instruktur`;
+CREATE TABLE `tbl_instruktur` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `photo` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_instruktur`
+--
+
+INSERT INTO `tbl_instruktur` (`id`, `name`, `photo`) VALUES
+(14, 'test', 'spongebob.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_jadwal`
+--
+
+DROP TABLE IF EXISTS `tbl_jadwal`;
+CREATE TABLE `tbl_jadwal` (
+  `id` int(11) NOT NULL,
+  `id_instruktur` int(11) NOT NULL,
+  `hari` varchar(50) DEFAULT NULL,
+  `jam_mulai` time DEFAULT NULL,
+  `jam_selesai` time DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_jadwal`
+--
+
+INSERT INTO `tbl_jadwal` (`id`, `id_instruktur`, `hari`, `jam_mulai`, `jam_selesai`) VALUES
+(2, 14, 'Minggu', '01:18:00', '04:18:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_jadwal_member`
+--
+
+DROP TABLE IF EXISTS `tbl_jadwal_member`;
+CREATE TABLE `tbl_jadwal_member` (
+  `id` int(11) NOT NULL,
+  `id_jadwal` int(11) NOT NULL,
+  `id_member` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_jadwal_member`
+--
+
+INSERT INTO `tbl_jadwal_member` (`id`, `id_jadwal`, `id_member`) VALUES
+(2, 2, 38);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_member`
 --
 
@@ -104,16 +166,17 @@ CREATE TABLE `tbl_member` (
   `status_member` text NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `tanggal_ultah` varchar(255) DEFAULT NULL
+  `tanggal_ultah` varchar(255) DEFAULT NULL,
+  `foto_member` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_member`
 --
 
-INSERT INTO `tbl_member` (`id_member`, `kode_member`, `nama_member`, `alamat_member`, `jk_member`, `hp_member`, `paket_member`, `tgl_member`, `berlaku_member`, `status_member`, `password`, `email`, `tanggal_ultah`) VALUES
-(1, '1111', 'laras_admin', 'admin', 'Perempuan', '111', '0', '2020-11-24', '2020-12-26', 'aktif', '21232f297a57a5a743894a0e4a801fc3', 'test@gmail.com', '2000-11-11'),
-(38, '7890', 'member1', 'jl alamat', 'pria', '123', '9', '2020-11-24', '2020-12-24', 'aktif', '202cb962ac59075b964b07152d234b70', 'bryan.wijaya008@gmail.com', '2000-11-10');
+INSERT INTO `tbl_member` (`id_member`, `kode_member`, `nama_member`, `alamat_member`, `jk_member`, `hp_member`, `paket_member`, `tgl_member`, `berlaku_member`, `status_member`, `password`, `email`, `tanggal_ultah`, `foto_member`) VALUES
+(1, '1111', 'laras_admin', 'admin', 'Perempuan', '111', '8', '2020-12-09', '2020-12-10', 'aktif', '21232f297a57a5a743894a0e4a801fc3', 'test@gmail.com', '2000-11-11', NULL),
+(38, '7890', 'member1', 'jl alamat', 'pria', '123', '9', '2020-11-24', '2020-12-24', 'aktif', '202cb962ac59075b964b07152d234b70', 'bryan.wijaya008@gmail.com', '2000-11-10', 'baymax.jpg');
 
 -- --------------------------------------------------------
 
@@ -152,7 +215,10 @@ CREATE TABLE `tbl_pembayaran` (
 --
 
 INSERT INTO `tbl_pembayaran` (`id_pembayaran`, `id_member`, `tgl_pembayaran`, `jumlah_pembayaran`, `ket_pembayaran`) VALUES
-(47, '38', '2020-11-24', '140000', 'Daftar member baru, paket 1 Bulan');
+(47, '38', '2020-11-24', '140000', 'Daftar member baru, paket 1 Bulan'),
+(59, '1', '2020-12-09', '8000', 'Harian'),
+(60, '1', '2020-12-09', '140000', '1 Bulan'),
+(61, '', '2020-12-09', '8000', 'Perpanjangan member, paket Harian');
 
 -- --------------------------------------------------------
 
@@ -222,6 +288,24 @@ ALTER TABLE `tbl_harga`
   ADD PRIMARY KEY (`id_harga`);
 
 --
+-- Indexes for table `tbl_instruktur`
+--
+ALTER TABLE `tbl_instruktur`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_jadwal`
+--
+ALTER TABLE `tbl_jadwal`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_jadwal_member`
+--
+ALTER TABLE `tbl_jadwal_member`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_member`
 --
 ALTER TABLE `tbl_member`
@@ -274,6 +358,24 @@ ALTER TABLE `tbl_harga`
   MODIFY `id_harga` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `tbl_instruktur`
+--
+ALTER TABLE `tbl_instruktur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `tbl_jadwal`
+--
+ALTER TABLE `tbl_jadwal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_jadwal_member`
+--
+ALTER TABLE `tbl_jadwal_member`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tbl_member`
 --
 ALTER TABLE `tbl_member`
@@ -283,13 +385,13 @@ ALTER TABLE `tbl_member`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id_order` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id_order` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `tbl_pembayaran`
 --
 ALTER TABLE `tbl_pembayaran`
-  MODIFY `id_pembayaran` int(59) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_pembayaran` int(59) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `tbl_produk`

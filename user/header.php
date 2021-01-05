@@ -55,7 +55,7 @@
                 $ad = mysqli_query($koneksi,"SELECT * FROM tbl_member WHERE id_member='$x'");
                 $aa = mysqli_fetch_assoc($ad);
                 ?>
-                  <img src="../assets/dist/img/avatar5.png" class="user-image">
+                  <img src="../images/photoMember/<?php echo $_SESSION['foto'];?>" class="user-image">
                 <span class="hidden-xs">NAMA : <?php echo $aa['nama_member']; ?> </span> 
               </a>
             </li>
@@ -75,7 +75,7 @@
       <section class="sidebar">
         <div class="user-panel">
           <div class="pull-left image">
-            <img src="../assets/dist/img/avatar5.png" class="img-circle" alt="User Image">
+            <img src="../images/photoMember/<?php echo $_SESSION['foto'];?>" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
             <p><?php echo $_SESSION['nama']; ?></p>
@@ -97,6 +97,11 @@
           <li>
             <a href="transaksi_data.php">
              <i class="fa fa-id-card" aria-hidden="true"></i> <span>Transaksi</span>
+            </a>
+          </li> 
+          <li>
+            <a href="jadwal_data.php">
+             <i class="fa fa-book" aria-hidden="true"></i> <span>Jadwal</span>
             </a>
           </li> 
           <li class="treeview">

@@ -27,7 +27,7 @@
       
         </div>
         <div class="box-body">
-        <form class="form-horizontal" action="instruktur_update_act.php" method="post">
+        <form class="form-horizontal" action="instruktur_update_act.php" method="post" enctype="multipart/form-data">
         <?php
              $id = $_GET['id'];
              $data = mysqli_query($koneksi,"SELECT * FROM tbl_instruktur WHERE id ='$id'");
@@ -39,7 +39,13 @@
               <div class="col-sm-10">
                 <input name="name" type="text" class="form-control" required="required" value="<?php echo $d['name'];?>" name="nama_instruktur">
               </div>
-            </div>               
+            </div>      
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">Foto</label>
+              <div class="col-sm-10">
+                <input type="file" class="form-control" name="foto" value="<?php echo $da['photo']?>"> 
+              </div>
+            </div>             
           </div>
           <!-- /.box-body -->
           <div class="box-footer">

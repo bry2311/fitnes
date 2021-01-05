@@ -47,7 +47,9 @@
                 <label for="inputEmail3" class=" control-label">Email</label>
                 <input type="email" class="form-control" required="required" name="email" value="<?php echo $da['email']?>"> 
                 <label for="inputEmail3" class=" control-label">Tanggal Ultah</label>
-                <input type="date" class="form-control" required="required" name="ultah" value="<?php echo $da['tanggal_ultah']?>">            
+                <input type="date" class="form-control" required="required" name="ultah" value="<?php echo $da['tanggal_ultah']?>">    
+                <label for="inputEmail3" class=" control-label">Foto Profil</label>
+                <input type="file" class="form-control" name="foto" value="<?php echo $da['foto_member']?>">             
             </div>
             <?php }?>      
           </div>

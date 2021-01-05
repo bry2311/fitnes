@@ -12,6 +12,7 @@ $password = md5($_POST['password']);
 			$_SESSION['id'] = $data['id_member'];
 			$_SESSION['nama'] = $data['nama_member'];
 			$_SESSION['kode'] = $data['kode_member'];
+			$_SESSION['foto'] = $data['foto_member'];
 			$_SESSION['login'] = "user";
 			header("location:user/");
 		}else{
